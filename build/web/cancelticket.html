@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Your Ticket</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c82333;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 15px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString); 
+            const userIdFromURL = urlParams.get('id');
+
+            if (userIdFromURL) {
+                document.getElementById('userId').value = userIdFromURL;
+            }
+
+            document.querySelector('form').onsubmit = function(event) {
+                const enteredUserId = document.getElementById('userId').value;
+
+                if (enteredUserId !== userIdFromURL) {
+                    event.preventDefault(); // Prevent form submission
+                    document.getElementById('error').textContent = "Sorry, you cannot cancel others' tickets.";
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Cancel Your Ticket</h1>
+        <form action="cancelticket" method="post">
+            <label for="ticketId">Enter the Ticket ID:</label>
+            <input type="text" id="ticketId" name="ticketId" placeholder="Ticket ID" required>
+
+            <label for="userId">Enter Your User ID:</label>
+            <input type="text" id="userId" name="userId" placeholder="User ID" required>
+
+            <input type="submit" value="Submit">
+            <p id="error" class="error-message"></p>
+        </form>
+    </div>
+</body>
+</html>

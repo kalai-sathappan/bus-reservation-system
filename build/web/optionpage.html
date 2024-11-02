@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Reservation System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #userIdDisplay {
+            font-size: 24px;
+            color: darkred;
+            margin-bottom: 20px;
+        }
+        #userNameDisplay {
+            font-size: 24px;
+            color: darkmagenta;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .action-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString); 
+            const id = urlParams.get('id');
+            const username = urlParams.get('username');
+
+            if (id) { 
+                document.getElementById('userIdDisplay').textContent = "Your ID: " + id;
+            }
+            if (username) {
+                document.getElementById('userNameDisplay').textContent = "Welcome, " + username + "!";
+            }
+
+            // Add ID to buttons' href if it exists
+            if (id) {
+                document.getElementById('cancelTicketBtn').onclick = function() {
+                    window.location.href = 'cancelticket.html?id=' + id;
+                };
+                document.getElementById('viewTicketBtn').onclick = function() {
+                    window.location.href = 'viewticket.html?id=' + id;
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container"> 
+        <p id="userIdDisplay">User ID: Not available</p>
+        <p id="userNameDisplay">User name: Not available</p>
+        <div class="button-container">
+            <button class="action-button" onclick="window.location.href='newbus.html'">ADD BUS</button>
+            <button class="action-button" onclick="window.location.href='bookticket.html'">BOOK A TICKET</button>
+            <button class="action-button" id="cancelTicketBtn">CANCEL A TICKET</button>
+            <button class="action-button" id="viewTicketBtn">VIEW TICKET DETAILS</button>
+        </div>
+    </div>
+</body>
+</html>
