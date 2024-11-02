@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            padding: 50px;
+            text-align: center;
+        }
+        h1 {
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error-message {
+            color: red;
+            margin-top: 15px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString); 
+            const userIdFromURL = urlParams.get('id');
+
+            if (userIdFromURL) {
+                document.getElementById('userId').value = userIdFromURL;
+            }
+
+            document.querySelector('form').onsubmit = function(event) {
+                const enteredUserId = document.getElementById('userId').value;
+                
+                if (enteredUserId !== userIdFromURL) {
+                    event.preventDefault(); // Prevent form submission
+                    document.getElementById('error').textContent = "Sorry, you cannot view others' tickets.";
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <h1>View Your Ticket</h1>
+    <form action="viewticket" method="post">  
+        <label for="ticketId">Enter the Ticket ID:</label>
+        <input type="text" id="ticketId" name="ticketId" placeholder="Ticket ID" required>
+
+        <label for="userId">Enter Your User ID:</label>
+        <input type="text" id="userId" name="userId" placeholder="User ID" required>
+
+        <input type="submit" value="Submit">
+        <p id="error" class="error-message"></p>
+    </form>
+</body>
+</html>

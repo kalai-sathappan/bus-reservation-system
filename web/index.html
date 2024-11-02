@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Bus Reservation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>  
+            body{
+                background-color: #f0f8ff;
+            }  
+            img{ 
+             height:100%;
+             width: 100%;
+            }
+            .top { 
+                position: absolute;
+                top: 15%;
+                left: 35%;
+                font-size: 45px; /* Increased font size for better visibility */
+                text-align: center;
+                background: linear-gradient(to right,white, transparent,white);
+                background-size: 200% 100%;
+                background-clip: text;
+                color:transparent; /* Make the text itself transparent */
+                animation: color-flow 4s linear infinite; /* Adjust animation speed as needed */
+                font-weight: bold;
+            }
+
+            @keyframes color-flow {
+                0% {
+                    background-position: 100% 0%;
+                }
+                100% {
+                    background-position: 0% 0%;
+                }
+            }
+            .loginform{   
+                  position: absolute;
+                  top: 30%; 
+                  left : 25%;
+                  height: 50%; 
+                  width: 50%;
+                  background-color:darkgray; 
+                  color:midnightblue;
+            } 
+            .scrolling-text {
+                position: fixed;
+                top: 81%; 
+                background-color:#f0f8ff;
+                overflow: hidden; /* Ensures text stays inside container */
+                width: 100vw; /* Set container width to full viewport width */
+            }
+
+            .scrolling-text p {
+                display: inline-block;
+                white-space: nowrap; /* Prevents the text from wrapping to the next line */
+                color: black;
+                font-size: 30px;
+                animation: scroll-text 7s linear infinite; /* Animation effect */
+            }
+
+            @keyframes scroll-text {
+                0% {
+                    transform: translateX(100vw); /* Start from the right side of the viewport */
+                }
+                100% {
+                    transform: translateX(-100%); /* Move all the way to the left */
+                }
+            }
+        
+        input[type="submit"] {
+            background-color: midnightblue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 20px; /* Rounded ends */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Optional: Add hover effect */
+        input[type="submit"]:hover {
+            background-color:skyblue;
+        } 
+        input{ 
+         background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 20px; /* Rounded ends */
+            transition: background-color 0.3s ease;
+        } 
+        a{
+            font-size:20px;
+        }
+        </style>
+    </head>
+    <body> 
+    <center>  
+        <img src ="image/b2.jpg" alt =" image">
+        <div class ="top">  
+            KPS Tours&Travels
+        </div>
+       <div class ="loginform">  
+        <form action="Loginservlet" method = "post">  
+            <h2>UserName : </h2> 
+            <input type ="text" name ="username" />
+            <br>  
+            <h2>Password : </h2>
+            <input type ="password" name ="password" />
+            <br><br>  
+            <input type="submit" value = "login"/>  
+        </form>   
+           <br>
+        <a href="signup.html">NEW USER(CREATE USER ACCOUNT)</a> 
+       </div>
+    </center> 
+    
+
+    </body>
+</html>

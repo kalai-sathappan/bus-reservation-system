@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Reservation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="submit"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .button-container input {
+            width: auto;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bus Reservation</h1>
+        <div class="button-container">
+            <form action="displayroute" method="post"> 
+                <input type="submit" id="bt1" value="Available Buses"> 
+            </form>
+        </div>
+        <form action="confirmticket" method="post">   
+            <label for="id">Enter your ID:</label>
+            <input type="text" id="id" name="id" placeholder="Enter your userId" required> 
+            
+            <label for="busNumber">Enter the Bus Number:</label>
+            <input type="text" id="busNumber" name="busNumber" placeholder="Enter bus number" required> 
+            
+            <label for="seat">Enter your Seat Number(1 to 50):</label>
+            <input type="text" id="seat" name="seat" placeholder="Enter seat number" required> 
+            
+            <label for="status">Enter Status:</label>
+            <input type="text" id="status" name="status" placeholder="Type 'booked'" required> 
+            
+            <label for="date">Enter the Travel Date:</label>
+            <input type="text" id="date" name="date" placeholder="YYYY-MM-DD" required> 
+            
+            <label for="route">Enter the Route:</label>
+            <input type="text" id="route" name="route" placeholder="Enter route" required> 
+            
+            <input type="submit" value="Confirm Ticket">
+        </form>
+    </div>
+</body>
+</html>
